@@ -15,7 +15,6 @@ As a full-stack developer who built systems like the **Smart Pharmacy**, **Pet E
 - ✅ **Maintainable** — clean architecture, testable, documented
 - ✅ **Future-proof** — signals-first, standalone, aligned with Angular 20/21
 - ✅ **Aligned with my projects**:
-  - 🌍 Real-time Environmental Monitoring App (PFE 2026)
   - 🏥 Hospital System enhancements
   - 🐾 Ionic + Angular mobile apps
 
@@ -104,10 +103,6 @@ Project 04: ░░░░░░░░░░░░░░░░░░░░ 0%
 Overall: ████░░░░░░░░░░░░░░░░░░ 8% → 29 days
 ```
 
-🔁 *Updated daily in [`roadmap.md`](roadmap.md)*
-
----
-
 ## 🧠 Core Principles
 
 | Principle | Practice |
@@ -119,63 +114,6 @@ Overall: ████░░░░░░░░░░░░░░░░░░ 8% �
 | **Build for Real** | Every project connects to PFE, sustainability, or security goals. |
 
 ---
-
-## 🔍 Day 1: Foundations — Sample Code
-
-Here’s the first component you built — clean, modern, Angular 19.
-
-### `src/app/hello.component.ts`
-```ts
-import { Component, signal } from '@angular/core';
-
-@Component({
-  selector: 'app-hello',
-  template: `
-    <div class="hello-card">
-      <h2>Hello, {{ name() }}! 👋</h2>
-
-      @if (showGreeting()) {
-        <p>Welcome to Angular {{ version }} learning.</p>
-      } @else {
-        <p>Click "Show Greeting" to continue.</p>
-      }
-
-      <button (click)="toggleGreeting()">
-        {{ showGreeting() ? 'Hide' : 'Show' }} Greeting
-      </button>
-    </div>
-  `,
-  styles: [`
-    .hello-card {
-      padding: 1.5rem;
-      border: 2px solid #4CAF50;
-      border-radius: 12px;
-      background: #f8fff8;
-      margin: 1.5rem 0;
-      text-align: center;
-    }
-    button {
-      margin-top: 1rem;
-      padding: 0.5rem 1.5rem;
-      background: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-  `]
-})
-export class HelloComponent {
-  name = signal('Soumaya');
-  showGreeting = signal(false);
-  version = '19';
-
-  toggleGreeting() {
-    this.showGreeting.update(prev => !prev);
-  }
-}
-```
-
 ### Key Takeaways
 - ✅ `signal()` for reactive state
 - ✅ `{{ name() }}` — **must call as function**
