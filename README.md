@@ -1,8 +1,7 @@
-```md
-# 🌟 Soumaya’s Angular Mastery Journey  
-> *“I understand every line I write.”*  
-> **Started**: January 2, 2026  
-> **Goal**: Full mastery of modern Angular (v19 → v21), ready for PFE, production apps, and open contribution  
+# 🌟 Soumaya’s Angular Mastery Journey
+> *“I understand every line I write.”*
+> **Started**: January 2, 2026
+> **Goal**: Full mastery of modern Angular (v19 → v21), ready for PFE, production apps, and open contribution
 > **Philosophy**: No AI-generated code. No copy-paste. Deep, hands-on, concept-first learning.
 
 ---
@@ -11,14 +10,14 @@
 
 As a full-stack developer who built systems like the **Smart Pharmacy**, **Pet E-Commerce**, and **Hospital Management System**, I need Angular that is:
 
-- ✅ **Secure** — aware of XSS, CSP, sanitization  
-- ✅ **Performant** — lazy loading, deferrable views, bundle-aware  
-- ✅ **Maintainable** — clean architecture, testable, documented  
-- ✅ **Future-proof** — signals-first, standalone, aligned with Angular 20/21  
-- ✅ **Aligned with my projects**:  
-  - 🌍 Real-time Environmental Monitoring App (PFE 2026)  
-  - 🏥 Hospital System enhancements  
-  - 🐾 Ionic + Angular mobile apps  
+- ✅ **Secure** — aware of XSS, CSP, sanitization
+- ✅ **Performant** — lazy loading, deferrable views, bundle-aware
+- ✅ **Maintainable** — clean architecture, testable, documented
+- ✅ **Future-proof** — signals-first, standalone, aligned with Angular 20/21
+- ✅ **Aligned with my projects**:
+  - 🌍 Real-time Environmental Monitoring App (PFE 2026)
+  - 🏥 Hospital System enhancements
+  - 🐾 Ionic + Angular mobile apps
 
 This is not just “learning Angular” — it’s **engineering discipline in practice**.
 
@@ -61,9 +60,9 @@ angular-mastery/
 ```
 
 Each project folder contains:
-- ✅ `README.md` — daily journal, concepts, debugging notes  
-- ✅ Source code — **100% hand-written**, no AI  
-- ✅ `angular.json`, `package.json` — pinned to Angular 19.2.x  
+- ✅ `README.md` — daily journal, concepts, debugging notes
+- ✅ Source code — **100% hand-written**, no AI
+- ✅ `angular.json`, `package.json` — pinned to Angular 19.2.x
 
 ---
 
@@ -178,48 +177,13 @@ export class HelloComponent {
 ```
 
 ### Key Takeaways
-- ✅ `signal()` for reactive state  
-- ✅ `{{ name() }}` — **must call as function**  
-- ✅ `@if` / `@else` — modern, readable control flow  
-- ✅ `.update(prev => !prev)` — safe mutation  
+- ✅ `signal()` for reactive state
+- ✅ `{{ name() }}` — **must call as function**
+- ✅ `@if` / `@else` — modern, readable control flow
+- ✅ `.update(prev => !prev)` — safe mutation
 
 ---
-
-## 🔜 Beyond Mastery
-
-After Day 29, I’ll be ready to:
-
-- ✅ Build the **Environmental Monitoring App (PFE 2026)** with:  
-  ```ts
-  // Future eco-app snippet (Day 20+)
-  @Component({
-    template: `
-      @defer (on viewport) {
-        <app-sensor-chart [data]="sensorData()"/>
-      } @placeholder {
-        <div class="skeleton">Loading sensors...</div>
-      }
-    `
-  })
-  ```
-- ✅ Integrate with **Spring Boot** (your backend strength)  
-- ✅ Add **Ionic** for mobile (React Native → Angular hybrid)  
-- ✅ Contribute to Angular accessibility or DevTools
-
-> 📌 Angular 20 (stable, ~March 2026) and 21 (May 2026) will feel natural — because we learned the *principles*, not just the syntax.
-
----
-
 ## 🙌 Acknowledgements
 
-- **Angular Team** — for a framework that balances innovation and stability.  
-- **My past self** — for the discipline to document, reflect, and never settle for “it works”.  
-- **You (future Soumaya)** — for opening this file in 2027 and smiling at how far you’ve come.
-
----
-
-> 🌱 **Mastery isn’t a destination — it’s the daily choice to understand, not just use.**  
-> — Soumaya Ben Ahmed  
-> Full-Stack Developer | Cybersecurity Learner | PFE 2026 Candidate  
-> Tunis, January 2026
-```
+- **Angular Team** — for a framework that balances innovation and stability.
+- **My past self** — for the discipline to document, reflect, and never settle for “it works”.
