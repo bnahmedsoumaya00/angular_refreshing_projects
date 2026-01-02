@@ -1,27 +1,35 @@
-# 00Foundations
+# 🌱 Angular 19 Mastery — Project 00: Foundations  
+**Goal**: Rebuild core mental model — standalone components, signals, modern control flow (`@if`)  
+**Duration**: Day 1 / 5  
+**Status**: ✅ Day 1 Complete  
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.20.
+---
 
-## Development server
+## 🎯 Day 1: Manual Component + `@if` + Signals
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### ✅ What I Built
+- Created `HelloComponent` **entirely by hand** (no `ng generate`)
+- Used Angular 19 modern syntax:
+  - `@if` / `@else` (replaces `*ngIf`)
+  - `signal()` for reactive state
+  - `() => !prev` pattern for state toggling
+- Integrated into `AppComponent` via `imports: []` (standalone style)
 
-## Code scaffolding
+### 📁 Key Files
+| File | Purpose |
+|------|---------|
+| `src/app/hello.component.ts` | Manually created component with signals & `@if` |
+| `src/app/app.component.ts` | Root component — imports and uses `HelloComponent` |
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### 💡 Key Concepts Learned
+| Concept | Why It Matters | My Note |
+|--------|----------------|---------|
+| `signal()` | Lightweight reactive state (no RxJS needed for simple cases) | ✅ Must call as function `name()` in template to read |
+| `@if` / `@else` | Modern, readable control flow (no `*ngIf` microsyntax) | Cleaner than `*ngIf`; supports `@else` natively |
+| Standalone `imports` | No NgModules — components declare their own dependencies | `HelloComponent` is imported directly in `AppComponent` |
+| `.update()` | Safe mutation — avoids stale closures | Prefer over `.set()` when new value depends on old |
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### 🛠️ How to Run
+```bash
+npm install
+ng serve
