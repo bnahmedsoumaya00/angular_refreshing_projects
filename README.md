@@ -66,45 +66,189 @@ Each project folder contains:
 
 ---
 
-## 🗺️ Integrated Roadmap
+## 📅 Detailed Learning Plan: 29 Days, 5 Weeks
 
-| # | Project | Duration | Status | Key Outcomes |
-|---|---------|----------|--------|--------------|
-| **00** | **Foundations**<br>*“Task Core”* | Day 1–5 | ✅ Day 1 | • Standalone components<br>• `signal()`, `computed()`, `effect()`<br>• `@if`, `@for`, `@switch` |
-| **01** | **Routing & State**<br>*“Task Manager”* | Day 6–11 | ⏳ | • Routing + guards<br>• Lazy loading<br>• `localStorage` sync |
-| **02** | **Forms & HTTP**<br>*“Task API”* | Day 12–17 | ⏳ | • Reactive forms<br>• `HttpClient` + interceptors<br>• Mock Service Worker (MSW) |
-| **03** | **Advanced Patterns**<br>*“Eco-Monitor Lite”* | Day 18–24 | ⏳ | • `@defer` + `@placeholder`<br>• View Transitions<br>• XSS prevention<br>• ⚙️ **PFE 2026 prep** |
-| **04** | **PWA & Deploy**<br>*“Deployed Task PWA”* | Day 25–29 | ⏳ | • Bundle analysis<br>• PWA (`@angular/pwa`)<br>• Firebase Hosting + GitHub Actions |
+#### **Week 1: Foundations (Days 1–5)**  
+**Goal**: Master core reactive primitives and modern templating.
+
+- **Day 1**:  
+  - Create `HelloComponent` manually  
+  - Use `signal()` for reactive state  
+  - Implement `@if` / `@else` control flow  
+  - Understand template interpolation with signals (`{{ name() }}`)
+
+- **Day 2**:  
+  - Introduce `computed()` for derived state (e.g., `completedCount`)  
+  - Use `effect()` for side effects (e.g., console logging)  
+  - Build `TaskItemComponent` with `input()` for properties  
+  - Compose components: `TaskListComponent` → `TaskItemComponent`
+
+- **Day 3**:  
+  - Render lists with `@for`  
+  - Use `track` by stable identifier (`track task.id`)  
+  - Handle empty states with `@empty`  
+  - Add dynamic task generation
+
+- **Day 4**:  
+  - Emit events with `output()` (modern `@Output` replacement)  
+  - Build task creation form with two-way binding  
+  - Handle user input validation (basic)  
+  - Update parent state from child component
+
+- **Day 5**:  
+  - Persist tasks to `localStorage` using `effect()`  
+  - Rehydrate state on app load  
+  - Debug with Angular DevTools (signals inspection)  
+  - Review common errors: expression changed, missing imports
 
 ---
 
-### 📅 Weekly Goals
+#### **Week 2: Routing & State Management (Days 6–11)**  
+**Goal**: Build multi-page app with shared, persistent state.
 
-| Week | Dates | Focus | Success Metric |
-|------|-------|-------|----------------|
-| **Week 1** | Jan 2–8 | 🧱 Project 00 | ✅ 5 daily `README.md` updates<br>✅ Working task list with signals |
-| **Week 2** | Jan 9–15 | 🧭 Project 01 | ✅ Multi-page app with auth guard<br>✅ Tasks persist after refresh |
-| **Week 3** | Jan 16–22 | 📝 Project 02 | ✅ Task CRUD with mock API<br>✅ Form validation + error UX |
-| **Week 4** | Jan 23–29 | ⚡ Project 03 | ✅ Deferred sensor charts<br>✅ Mobile-responsive dashboard |
-| **Week 5** | Jan 30–Feb 5 | 🚀 Project 04 | ✅ Live PWA at `*.web.app`<br>✅ Auto-deploy on `git push` |
+- **Day 6**:  
+  - Set up `RouterModule` in standalone app  
+  - Define routes: `/`, `/tasks`, `/settings`  
+  - Use `routerLink`, `RouterOutlet`  
+  - Navigate programmatically
 
-> 📌 **Target Completion**: **February 5, 2026**
+- **Day 7**:  
+  - Implement route guard: `canActivate`  
+  - Create mock `AuthService` with signal-based auth state  
+  - Protect `/tasks` route  
+  - Redirect unauthenticated users
+
+- **Day 8**:  
+  - Configure lazy loading for feature routes  
+  - Use `import()` + standalone component config  
+  - Verify bundle splitting with `ng build --stats-json`
+
+- **Day 9**:  
+  - Build shared `TaskService`  
+  - Expose tasks as `signal()` + `computed()` API  
+  - Inject service via `inject()` in components  
+  - Share state across routes
+
+- **Day 10**:  
+  - Sync service state to `localStorage`  
+  - Handle initial load race conditions  
+  - Add loading indicators (static)
+
+- **Day 11**:  
+  - Implement route resolvers  
+  - Pre-fetch data before activation  
+  - Handle errors in guards/resolvers
 
 ---
 
-### 📊 Progress Dashboard
+#### **Week 3: Forms & HTTP Integration (Days 12–17)**  
+**Goal**: Connect to backend (mocked), handle user input robustly.
 
-```text
-Project 00: ██████████░░░░░░░░░░ 20% (Day 1/5)
-Project 01: ░░░░░░░░░░░░░░░░░░░░ 0%
-Project 02: ░░░░░░░░░░░░░░░░░░░░ 0%
-Project 03: ░░░░░░░░░░░░░░░░░░░░ 0%
-Project 04: ░░░░░░░░░░░░░░░░░░░░ 0%
+- **Day 12**:  
+  - Build reactive form with `FormControl`, `FormGroup`  
+  - Add sync validators: `required`, `minLength`  
+  - Display validation errors dynamically
 
-Overall: ████░░░░░░░░░░░░░░░░░░ 8% → 29 days
-```
+- **Day 13**:  
+  - Create custom validator (e.g., “title must be unique”)  
+  - Debounce async validation  
+  - Style error states (SCSS)
 
-🔁 *Updated daily in [`roadmap.md`](roadmap.md)*
+- **Day 14**:  
+  - Integrate `HttpClient`  
+  - Fetch tasks from `/api/tasks`  
+  - Handle loading and error states  
+  - Use `async` pipe with `Observable`
+
+- **Day 15**:  
+  - Implement `HttpInterceptor`  
+  - Add auth header injection  
+  - Global error handler (toast/snackbar)  
+  - Loading spinner interceptor
+
+- **Day 16**:  
+  - Set up **Mock Service Worker (MSW)**  
+  - Mock REST endpoints: GET, POST, PATCH, DELETE  
+  - Simulate network delays and errors  
+  - Decouple frontend from backend progress
+
+- **Day 17**:  
+  - Build optimistic UI updates  
+  - Update UI before API response  
+  - Rollback on error  
+  - Add undo capability
+
+---
+
+#### **Week 4: Advanced Patterns (Days 18–24)**  
+**Goal**: Prepare for production and your PFE 2026.
+
+- **Day 18**:  
+  - Use `@defer` for lazy-loading components  
+  - Trigger on `viewport`, `idle`, `timer`  
+  - Add `@placeholder`, `@loading`, `@error`
+
+- **Day 19**:  
+  - Convert entire app to pure standalone (no `NgModule` remnants)  
+  - Bootstrap with `provideHttpClient()`, `provideAnimations()`  
+  - Clean up `main.ts`
+
+- **Day 20**:  
+  - Implement View Transitions API  
+  - Smooth route/page transitions  
+  - Fallback for unsupported browsers
+
+- **Day 21**:  
+  - Add responsive design (mobile-first)  
+  - Use SCSS mixins for breakpoints  
+  - Touch-friendly interactions
+
+- **Day 22**:  
+  - Introduce Vitest for component testing  
+  - Test `computed()` logic  
+  - Mock signals in tests
+
+- **Day 23**:  
+  - Add security hygiene:  
+    - Sanitize dynamic content  
+    - Avoid `[innerHTML]` risks  
+    - CSP considerations
+
+- **Day 24**:  
+  - Hybrid signals + RxJS:  
+    - `toSignal()` from `Observable`  
+    - `toObservable()` from `Signal`  
+    - When to use each
+
+---
+
+#### **Week 5: Deployment & Polish (Days 25–29)**  
+**Goal**: Ship a production-ready PWA.
+
+- **Day 25**:  
+  - Run `ng build --configuration production`  
+  - Analyze bundle with `source-map-explorer`  
+  - Remove unused dependencies
+
+- **Day 26**:  
+  - Add PWA support: `ng add @angular/pwa`  
+  - Configure `manifest.webmanifest`  
+  - Test offline behavior
+
+- **Day 27**:  
+  - Deploy to Firebase Hosting  
+  - Configure `firebase.json`  
+  - Set up custom domain (optional)
+
+- **Day 28**:  
+  - Create GitHub Actions workflow  
+  - Auto-deploy on `main` push  
+  - Run build + test in CI
+
+- **Day 29**:  
+  - Final review: performance, accessibility, security  
+  - Document architecture decisions  
+  - Plan next steps: Ionic integration, PFE extension
 
 ---
 
