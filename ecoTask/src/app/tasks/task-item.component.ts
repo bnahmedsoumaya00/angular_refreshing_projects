@@ -18,6 +18,8 @@ import { Component, input, output } from '@angular/core';
     .task-item {
       padding: 0.75rem;
       border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
     }
     input[type="checkbox"] {
       margin-right: 0.75rem;
@@ -25,15 +27,18 @@ import { Component, input, output } from '@angular/core';
   `]
 })
 export class TaskItemComponent {
+  id = input.required<number>();
   title = input.required<string>();
   completed = input.required<boolean>();
 
-  // 🔹 Prepare for Day 4: output event (not wired yet)
+  // 🔹 Output event: emits when checkbox changes
   toggle = output<{ id: number; completed: boolean }>();
 
   onToggle() {
-    // 🟡 Not implemented today — will emit event in Day 4
-    // For now: console log to confirm click works
-    console.log('[TaskItem] Toggle clicked — will emit in Day 4');
+    // Emit new state to parent
+    this.toggle.emit({
+      id: this.id(),
+      completed: !this.completed()
+    });
   }
 }

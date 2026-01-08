@@ -1,25 +1,45 @@
 import { Component, signal, computed, effect } from '@angular/core';
+import { FormsModule } from '@angular/forms'; // ← ADD THIS
 import { Task } from './task.model';
 import { TaskItemComponent } from './task-item.component';
 
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [TaskItemComponent],
+  imports: [TaskItemComponent, FormsModule], // ← ADD FormsModule HERE
   template: `
     <div class="task-list">
       <h3>Tasks ({{ tasks().length }})</h3>
       <p>✅ Completed: <strong>{{ completedCount() }}</strong></p>
 
-      <button (click)="addTask()" class="add-btn">
-        ➕ Add Task
-      </button>
+      <!-- 🔹 New: Task creation form -->
+      <form (ngSubmit)="addTaskFromForm()" #taskForm="ngForm" class="add-form">
+        <input
+          type="text"
+          [(ngModel)]="newTaskTitle"
+          name="title"
+          placeholder="Enter a new task..."
+          required
+          #titleInput="ngModel"
+          [disabled]="!newTaskTitle.trim()"
+          class="task-input"
+        />
+        <button
+          type="submit"
+          [disabled]="!newTaskTitle.trim()"
+          class="add-btn"
+        >
+          ➕ Add
+        </button>
+      </form>
 
       <div class="tasks">
         @for (task of tasks(); track task.id) {
           <app-task-item
+            [id]="task.id"
             [title]="task.title"
             [completed]="task.completed"
+            (toggle)="onTaskToggle($event)"
           />
         } @empty {
           <div class="empty-state">
@@ -34,14 +54,28 @@ import { TaskItemComponent } from './task-item.component';
     .task-list {
       margin: 1.5rem 0;
     }
+    .add-form {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .task-input {
+      flex: 1;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
     .add-btn {
       padding: 0.5rem 1rem;
-      background: #2196F3;
+      background: #4CAF50;
       color: white;
       border: none;
       border-radius: 4px;
       cursor: pointer;
-      margin-bottom: 1rem;
+    }
+    .add-btn:disabled {
+      background: #cccccc;
+      cursor: not-allowed;
     }
     .tasks {
       margin-top: 1rem;
@@ -62,6 +96,9 @@ export class TaskListComponent {
     { id: 2, title: 'Build task list', completed: false }
   ]);
 
+  // 🔹 For form input
+  newTaskTitle = '';
+
   completedCount = computed(() => {
     return this.tasks().filter(task => task.completed).length;
   });
@@ -74,14 +111,25 @@ export class TaskListComponent {
     });
   }
 
-  // 🔹 New: Add task with unique ID
-  addTask() {
-    const newTask: Task = {
-      id: Date.now(), // ✅ stable, unique ID (better than increment)
-      title: `Task ${this.tasks().length + 1}`,
-      completed: false
-    };
-    // ✅ Immutable update: create new array
-    this.tasks.update(tasks => [...tasks, newTask]);
+  // 🔹 Handle toggle from child
+  onTaskToggle(event: { id: number; completed: boolean }) {
+    this.tasks.update(tasks =>
+      tasks.map(task =>
+        task.id === event.id ? { ...task, completed: event.completed } : task
+      )
+    );
+  }
+
+  // 🔹 Add task from form
+  addTaskFromForm() {
+    if (this.newTaskTitle.trim()) {
+      const newTask: Task = {
+        id: Date.now(),
+        title: this.newTaskTitle.trim(),
+        completed: false
+      };
+      this.tasks.update(tasks => [...tasks, newTask]);
+      this.newTaskTitle = ''; // reset input
+    }
   }
 }
